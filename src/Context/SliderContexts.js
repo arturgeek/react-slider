@@ -1,2 +1,2 @@
 import { createContext } from "react";
-export const ActiveSlideContext = createContext(0);
+export const SliderContexts = createContext(0);

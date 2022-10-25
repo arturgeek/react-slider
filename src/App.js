@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect, useState, useReducer } from 'react';
 import { getSlides } from './API/SlidersData';
 import SliderContainer from './components/SliderContainer/SliderContainer';
-import { ActiveSlideContext } from './Context/SliderContexts';
+import { SliderContexts } from './Context/SliderContexts';
 
 function App() { 
   
@@ -46,11 +46,11 @@ function App() {
 
   
   return (
-    <ActiveSlideContext.Provider value={acitveSlide}>
+    <SliderContexts.Provider value={acitveSlide}>
     <div className="App">
     <SliderContainer slides={slides} />
     </div>
-    </ActiveSlideContext.Provider>
+    </SliderContexts.Provider>
     );
   }
   
