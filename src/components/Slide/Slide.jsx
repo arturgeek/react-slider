@@ -1,10 +1,15 @@
-const Slide = ( {imageUrl, hoverImageUrl, linkSpan, linkUrl} ) => {
+import "./Slide.css";
 
-    return <div>
-        imageUrl: {{imageUrl}}
-        hoverImageUrl: {{hoverImageUrl}}
-        linkSpan: {{linkSpan}}
-        linkUrl: {{linkUrl}}
+const Slide = ( slideData ) => {
+
+    return <div className="slide" key={slideData.imageUrl}>
+        imageUrl: {slideData.imageUrl}
+        <br/>
+        hoverImageUrl: {slideData.hoverImageUrl}
+        <br/>
+        linkSpan: {slideData.linkSpan}
+        <br/>
+        linkUrl: {slideData.linkUrl}
     </div>;
 };
 
