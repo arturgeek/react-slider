@@ -23,7 +23,8 @@ const Slide = ( slideData ) => {
             className={`slide ${hover ? "hover" : ""}`}
             key={slideData.imageUrl}
             style={{
-                backgroundImage: `url("${background}")`
+                backgroundImage: `url("${background}")`,
+                display: `${acitveSlide === slideData.imageUrl ? "block" : "none"}`
             }}
             onMouseOver={handleOnMouseOver}
             onMouseLeave={handleOnMOuseLeave}
