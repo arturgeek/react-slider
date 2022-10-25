@@ -33,6 +33,6 @@ const staticSliders = [
 ]
 
 
-export const getSliders = () => {
+export const getSlides = () => {
     return staticSliders
 }
