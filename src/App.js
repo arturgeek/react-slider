@@ -3,29 +3,13 @@ import { useEffect, useState, useReducer } from 'react';
 import { getSlides } from './API/SlidersData';
 import SliderContainer from './components/SliderContainer/SliderContainer';
 import { SliderContexts } from './Context/SliderContexts';
+import { sliderActionsReducer } from './Reducers/SliderReducer';
 
 function App() { 
   
   const [slides, setSlides] = useState([]);
   const [acitveSlide, setActiveSlide] = useState("");
   let sliderInterval = null;
-
-  const sliderActionsReducer = (currentSlideIndex, action) => {
-    switch(action.type) {
-      case "NextSlide":
-
-        console.log(currentSlideIndex, slides.length);
-        if( currentSlideIndex >= slides.length ){
-          currentSlideIndex = 0;
-        }
-        console.log(currentSlideIndex);
-        setActiveSlide(slides[ currentSlideIndex ].imageUrl)
-        
-        return currentSlideIndex + 1;
-      default:
-        return currentSlideIndex;
-    }
-  }
 
   const [currentSlideIndex, dispatch] = useReducer(sliderActionsReducer, 0);
   
