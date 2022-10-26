@@ -16,7 +16,7 @@ export const fetchSlides = createAsyncThunk(
         //dispatch( setLoading(true));
         const slides = await getSlides();
         dispatch( setSlides(slides) );
-        dispatch( setActiveSlide() )
+        dispatch( setCurrentSlide(0) )
         //dispatch( setLoading(false));
     }
 );
@@ -28,14 +28,21 @@ export const dataSlice = createSlice({
         setSlides: (state, action) => {
             state.slides = action.payload;
         },
-        setCurrentSlideIndex: (state, action) => {
+        setCurrentSlide: (state, action) => {
             state.currentSlideIndex = action.payload
+            state.acitveSlide = state.slides[ state.currentSlideIndex ]
         },
-        setActiveSlide: (state, action) => {
+        nextSlide: (state, action) => {
+            let tempCurrentSlideIndex = state.currentSlideIndex;
+            tempCurrentSlideIndex++;
+            if( tempCurrentSlideIndex >= state.slides.length ){
+                tempCurrentSlideIndex = 0;
+            }
+            state.currentSlideIndex = tempCurrentSlideIndex;
             state.acitveSlide = state.slides[ state.currentSlideIndex ]
         }
     }
 });
 
-export const { setSlides, setCurrentSlideIndex, setActiveSlide } = dataSlice.actions;
+export const { setSlides, setCurrentSlide, setActiveSlide, nextSlide } = dataSlice.actions;
 export default dataSlice.reducer;

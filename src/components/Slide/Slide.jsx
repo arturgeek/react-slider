@@ -7,7 +7,7 @@ const Slide = ({ imageUrl, hoverImageUrl, linkSpan, linkUrl}) => {
     const [hover, setHover] = useState(false);
     const [background, setBackground] = useState(imageUrl);
     const acitveSlide = useSelector( (state) => state.data.acitveSlide );
-    console.log("acitveSlide", acitveSlide);
+    
     const handleOnMouseOver = () => {
         setHover(true);
         setBackground( hoverImageUrl ?? imageUrl );
@@ -33,7 +33,7 @@ const Slide = ({ imageUrl, hoverImageUrl, linkSpan, linkUrl}) => {
             <br/>
             linkUrl: {linkUrl.toString()}
             <br/>
-            acitveSlide: {acitveSlide.imageUrl.toString()}
+            acitveSlide: {acitveSlide ? acitveSlide.imageUrl.toString() : ""}
             </div>        
     </div> : null;
 };
