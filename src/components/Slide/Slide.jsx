@@ -1,12 +1,11 @@
 import "./Slide.css";
 import { useState, useContext } from "react";
-import { SliderContexts } from "../../Context/SliderContexts";
 
 const Slide = ( slideData ) => {
 
     const [hover, setHover] = useState(false);
     const [background, setBackground] = useState(slideData.imageUrl);
-    const acitveSlide = useContext(SliderContexts);
+    const acitveSlide = "";
 
     const handleOnMouseOver = () => {
         setHover(true);
