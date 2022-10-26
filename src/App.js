@@ -4,16 +4,20 @@ import SliderContainer from './components/SliderContainer/SliderContainer';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchSlides, nextSlide } from './slices/dataSlice';
 
-function App() { 
+function App( {secondsInterval} ) { 
 
   const slides = useSelector( (state) => state.data.slides, shallowEqual);
-  const currentSlideIndex = useSelector( (state) => state.data.currentSlideIndex );
-
+  const sliderHovered = useSelector( (state) => state.data.sliderHovered );
+  const interval = secondsInterval * 1000;
   const dispatch = useDispatch();
   
   let sliderInterval = null;
 
   const processInterval = ( ) => {
+    console.log("sliderHovered", sliderHovered);
+    if( sliderHovered ){
+      return;
+    }
     dispatch( nextSlide() );
   }
 
@@ -26,7 +30,7 @@ function App() {
     clearInterval(sliderInterval);
     sliderInterval = setInterval( () => {
       processInterval();
-    }, 2000);
+    }, interval);
     
   }, [] );
   

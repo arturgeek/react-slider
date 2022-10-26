@@ -20,7 +20,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <App secondsInterval={5} />
     </Provider>
   </React.StrictMode>
 );
