@@ -19,7 +19,8 @@ function App() {
     
     clearInterval(sliderInterval);
     sliderInterval = setInterval( () => {
-      dispatch({type: "NextSlide"})
+      //dispatch({type: "NextSlide"})
+      console.log(slides);
     }, 2000);
     */
   }, [] );

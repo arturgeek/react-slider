@@ -9,7 +9,9 @@ import { legacy_createStore as createStore, compose, applyMiddleware } from 'red
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-const copmposedEnhancers = compose( 
+const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const copmposedEnhancers = composeAlt( 
   applyMiddleware(thunk),
 );
 const store = createStore( rootReducer, copmposedEnhancers );

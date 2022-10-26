@@ -1,39 +1,39 @@
 import "./Slide.css";
-import { useState, useContext } from "react";
+import { useState } from "react";
+import { useSelector } from 'react-redux';
 
-const Slide = ( slideData ) => {
+const Slide = ({ imageUrl, hoverImageUrl, linkSpan, linkUrl}) => {
 
     const [hover, setHover] = useState(false);
-    const [background, setBackground] = useState(slideData.imageUrl);
-    const acitveSlide = "";
-
+    const [background, setBackground] = useState(imageUrl);
+    const acitveSlide = useSelector( (state) => state.data.acitveSlide );
+    console.log("acitveSlide", acitveSlide);
     const handleOnMouseOver = () => {
         setHover(true);
-        const hoverImageUrl = slideData.hoverImageUrl ?? slideData.imageUrl;
-        setBackground(hoverImageUrl);
+        setBackground( hoverImageUrl ?? imageUrl );
     }
 
     const handleOnMOuseLeave = () => {
         setHover(false);
-        setBackground(slideData.imageUrl);
+        setBackground(imageUrl);
     }
 
-    return slideData.imageUrl ? <div 
+    return imageUrl ? <div 
             className={`slide ${hover ? "hover" : ""}`}
-            key={slideData.imageUrl}
+            key={imageUrl}
             style={{
                 backgroundImage: `url("${background}")`,
-                display: `${acitveSlide === slideData.imageUrl ? "block" : "none"}`
+                display: `${acitveSlide.imageUrl === imageUrl ? "block" : "none"}`
             }}
             onMouseOver={handleOnMouseOver}
             onMouseLeave={handleOnMOuseLeave}
         >
             <div>
-            linkSpan: {slideData.linkSpan}
+            linkSpan: {linkSpan.toString()}
             <br/>
-            linkUrl: {slideData.linkUrl}
+            linkUrl: {linkUrl.toString()}
             <br/>
-            acitveSlide: {acitveSlide}
+            acitveSlide: {acitveSlide.imageUrl.toString()}
             </div>        
     </div> : null;
 };
