@@ -3,7 +3,7 @@ import slideUrl2 from "../../static/slider-2.jpg";
 import slideUrl3 from "../../static/slider-3.jpg";
 import slideUrl4 from "../../static/slider-4.jpg";
 import hoverImageUrl from "../../static/hover.jpg";
-import SlideData from "../Model/SlideData";
+import SlideData  from "../Model/SlideData";
 
 const staticSliders = [
     new SlideData(
