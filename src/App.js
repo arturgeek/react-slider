@@ -8,19 +8,10 @@ import { fetchSlides, moveSlide } from './slices/dataSlice';
 function App( {secondsInterval} ) { 
 
   const slides = useSelector( (state) => state.data.slides, shallowEqual);
-  const sliderHovered = useSelector( (state) => state.data.sliderHovered );
   const interval = secondsInterval * 1000;
   const dispatch = useDispatch();
   
   let sliderInterval = null;
-
-  const processInterval = ( ) => {
-    console.log("sliderHovered", sliderHovered);
-    if( sliderHovered ){
-      return;
-    }
-    dispatch( moveSlide(1) );
-  }
 
   useEffect( () => {
     dispatch( fetchSlides() );
@@ -30,7 +21,7 @@ function App( {secondsInterval} ) {
     */
     clearInterval(sliderInterval);
     sliderInterval = setInterval( () => {
-      processInterval();
+      dispatch( moveSlide(1) );
     }, interval);
     
   }, [] );
