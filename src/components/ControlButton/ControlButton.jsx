@@ -1,11 +1,8 @@
 const ControlButton = ( {span, action} ) => {
 
-    const handleAction = () => {
-        console.log(action)
-    }
 
-    return <button onClick={handleAction()} >
-        {{span}}
+    return <button onClick={action} >
+        {span}
     </button>;
 };
 

@@ -9,7 +9,6 @@ const Slide = ({ imageUrl, hoverImageUrl, linkSpan, linkUrl}) => {
     const [hover, setHover] = useState(false);
     const [background, setBackground] = useState(imageUrl);
     const acitveSlide = useSelector( (state) => state.data.acitveSlide );
-    const sliderHovered = useSelector( (state) => state.data.sliderHovered );
     const dispatch = useDispatch();
     
     const handleOnMouseOver = () => {

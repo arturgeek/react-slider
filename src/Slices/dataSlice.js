@@ -35,22 +35,29 @@ export const dataSlice = createSlice({
         setSlideHovered: (state, action) => {
             state.sliderHovered = action.payload;
         },
-        nextSlide: (state, action) => {
-
-            if( state.sliderHovered ){
-                return;
-            }
-
-            let tempCurrentSlideIndex = state.currentSlideIndex;
-            tempCurrentSlideIndex++;
-            if( tempCurrentSlideIndex >= state.slides.length ){
-                tempCurrentSlideIndex = 0;
-            }
-            state.currentSlideIndex = tempCurrentSlideIndex;
-            state.acitveSlide = state.slides[ state.currentSlideIndex ]
-        }
+        moveSlide: (state, action) => {
+            changeSlide(state, action.payload)
+        },
     }
 });
 
-export const { setSlides, setCurrentSlide, setActiveSlide, nextSlide, setSlideHovered } = dataSlice.actions;
+const changeSlide = ( state, advance ) => {
+    if( state.sliderHovered ){
+        return;
+    }
+
+    let tempCurrentSlideIndex = state.currentSlideIndex;
+    tempCurrentSlideIndex += advance;
+
+    if( tempCurrentSlideIndex < 0 ){
+        tempCurrentSlideIndex = state.slides.length - 1;
+    }
+    else if( tempCurrentSlideIndex >= state.slides.length ){
+        tempCurrentSlideIndex = 0;
+    }
+    state.currentSlideIndex = tempCurrentSlideIndex;
+    state.acitveSlide = state.slides[ state.currentSlideIndex ]
+}
+
+export const { setSlides, setCurrentSlide, setSlideHovered, moveSlide } = dataSlice.actions;
 export default dataSlice.reducer;

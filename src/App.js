@@ -1,8 +1,9 @@
 import './App.css';
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect } from 'react';
 import SliderContainer from './components/SliderContainer/SliderContainer';
+import ControlButton from './components/ControlButton/ControlButton';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { fetchSlides, nextSlide } from './slices/dataSlice';
+import { fetchSlides, moveSlide } from './slices/dataSlice';
 
 function App( {secondsInterval} ) { 
 
@@ -18,7 +19,7 @@ function App( {secondsInterval} ) {
     if( sliderHovered ){
       return;
     }
-    dispatch( nextSlide() );
+    dispatch( moveSlide(1) );
   }
 
   useEffect( () => {
@@ -33,10 +34,20 @@ function App( {secondsInterval} ) {
     }, interval);
     
   }, [] );
+
+  const handleNextSlideButton = () => {
+    dispatch( moveSlide(1) );
+  }
+
+  const handlePreviousSlideButton = () => {
+    dispatch( moveSlide(-1) );
+  }
   
   return (
       <div className="App">
         <SliderContainer slides={slides} />
+        <ControlButton span="Previous" action={ handlePreviousSlideButton }></ControlButton>
+        <ControlButton span="Next" action={ handleNextSlideButton }></ControlButton>
       </div>
     );
   }
