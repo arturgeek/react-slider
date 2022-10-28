@@ -11,7 +11,7 @@ const staticSliders = [
         hoverImageUrl, 
         "Ir al enlace", 
         "#enlace"
-    ),/*
+    ),
     new SlideData(
         slideUrl2,
         hoverImageUrl, 
@@ -29,7 +29,7 @@ const staticSliders = [
         hoverImageUrl, 
         "", 
         ""
-    )*/
+    )
 ]
 
 
