@@ -1,6 +1,6 @@
 # react-slider
 There is a functional slider build with the tools below
-- React 16
+- React
 - Redux
 - Webpack
 - Babel
