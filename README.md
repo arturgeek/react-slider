@@ -24,3 +24,5 @@ npm run start
 
 Nomrally the project should run on http://localhost:3000/ but, depending your internall configuratio
 the port could be different so check out the console for the right url
+
+![alt text](https://github.com/arturgeek/react-slider/blob/main/static/run.jpg "Run console")
