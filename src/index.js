@@ -9,28 +9,29 @@ import { legacy_createStore as createStore, compose, applyMiddleware } from 'red
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const AddNewSlider = ( containerID, interval ) => {
 
-const copmposedEnhancers = composeAlt( 
-  applyMiddleware(thunk),
-);
+  const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const copmposedEnhancers = composeAlt( 
+    applyMiddleware(thunk),
+  );
 
-const store1 = createStore( rootReducer, copmposedEnhancers );
-const slider1 = ReactDOM.createRoot(document.getElementById('slider1'));
-slider1.render(
-  <React.StrictMode>
-    <Provider store={store1}>
-      <App secondsInterval={10} />
-    </Provider>
-  </React.StrictMode>
-);
+  const store = createStore( rootReducer, copmposedEnhancers );
+  const slider = ReactDOM.createRoot(document.getElementById(containerID));
+  slider.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App secondsInterval={interval} />
+      </Provider>
+    </React.StrictMode>
+  );
+}
 
-const store2 = createStore( rootReducer, copmposedEnhancers );
-const slider2 = ReactDOM.createRoot(document.getElementById('slider2'));
-slider2.render(
-  <React.StrictMode>
-    <Provider store={store2}>
-      <App secondsInterval={2} />
-    </Provider>
-  </React.StrictMode>
-);
+[1,2,3,4,5,6].forEach( number => {
+  const maximum = 10;
+  const minimum = 2;
+  
+  const interval = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+  const slider = `slider${number}`;
+  AddNewSlider(slider, interval)
+});
