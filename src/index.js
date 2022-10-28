@@ -14,13 +14,23 @@ const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const copmposedEnhancers = composeAlt( 
   applyMiddleware(thunk),
 );
-const store = createStore( rootReducer, copmposedEnhancers );
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const store1 = createStore( rootReducer, copmposedEnhancers );
+const slider1 = ReactDOM.createRoot(document.getElementById('slider1'));
+slider1.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App secondsInterval={5} />
+    <Provider store={store1}>
+      <App secondsInterval={10} />
+    </Provider>
+  </React.StrictMode>
+);
+
+const store2 = createStore( rootReducer, copmposedEnhancers );
+const slider2 = ReactDOM.createRoot(document.getElementById('slider2'));
+slider2.render(
+  <React.StrictMode>
+    <Provider store={store2}>
+      <App secondsInterval={2} />
     </Provider>
   </React.StrictMode>
 );
