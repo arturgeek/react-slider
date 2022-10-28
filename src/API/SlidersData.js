@@ -9,9 +9,9 @@ const staticSliders = [
     new SlideData(
         slideUrl1,
         hoverImageUrl, 
-        "", 
-        ""
-    ),
+        "Ir al enlace", 
+        "#enlace"
+    ),/*
     new SlideData(
         slideUrl2,
         hoverImageUrl, 
@@ -29,7 +29,7 @@ const staticSliders = [
         hoverImageUrl, 
         "", 
         ""
-    )
+    )*/
 ]
 
 

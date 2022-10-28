@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { setSlideHovered } from "../../slices/dataSlice";
 import { useDispatch } from 'react-redux';
+import SlideLink from "../SlideLink/SlideLink";
 
 const Slide = ({ imageUrl, hoverImageUrl, linkSpan, linkUrl}) => {
 
@@ -33,13 +34,7 @@ const Slide = ({ imageUrl, hoverImageUrl, linkSpan, linkUrl}) => {
             onMouseOver={handleOnMouseOver}
             onMouseLeave={handleOnMOuseLeave}
         >
-            <div>
-            linkSpan: {linkSpan.toString()}
-            <br/>
-            linkUrl: {linkUrl.toString()}
-            <br/>
-            acitveSlide: {acitveSlide ? acitveSlide.imageUrl.toString() : ""}
-            </div>        
+        { linkUrl ? <SlideLink linkSpan={linkSpan} linkUrl={linkUrl} /> : null }
     </div> : null;
 };
 
