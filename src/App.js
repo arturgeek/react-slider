@@ -37,8 +37,8 @@ function App( {secondsInterval} ) {
   return (
       <div className="App">
         <SliderContainer slides={slides} />
-        <ControlButton span="Previous" action={ handlePreviousSlideButton }></ControlButton>
-        <ControlButton span="Next" action={ handleNextSlideButton }></ControlButton>
+        <ControlButton buttonClass={"previousButton"} buttonSpan="Previous" buttonAction={ handlePreviousSlideButton }></ControlButton>
+        <ControlButton buttonClass={"nextButton"} buttonSpan="Next" buttonAction={ handleNextSlideButton }></ControlButton>
       </div>
     );
   }

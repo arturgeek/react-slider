@@ -1,6 +1,6 @@
-const ControlButton = ( {span, action} ) => {
-    return <button onClick={action} >
-        {span}
+const ControlButton = ( {buttonClass, buttonSpan, buttonAction} ) => {
+    return <button className={buttonClass} onClick={buttonAction} >
+        {buttonSpan}
     </button>;
 };
 
